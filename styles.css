@@ -1179,3 +1179,183 @@ body {
     color: #721c24;
     border: 1px solid #f5c6cb;
 }
+/* === Idea Evaluation Dashboard === */
+.eval-dashboard {
+  padding: 3rem 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(34, 197, 94, 0.15);
+  border-bottom: 1px solid rgba(34, 197, 94, 0.15);
+}
+
+.eval-header {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.eval-logo {
+  height: 44px; /* uses your crisp SVG if available */
+  width: auto;
+  display: block;
+}
+
+.eval-title h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #fff;
+}
+.eval-title .meta {
+  color: #b8c2b8;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.status-badge {
+  padding: .5rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  font-size: .85rem;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  color: #eafff2;
+}
+.status-approved {
+  background: rgba(34, 197, 94, 0.15);
+}
+
+.eval-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+}
+
+/* Layout: big alignment card (5 cols), impact (4), risks (3), sponsors (4), steps (4) */
+.card:nth-child(1) { grid-column: span 5; }
+.card:nth-child(2) { grid-column: span 4; }
+.card:nth-child(3) { grid-column: span 3; }
+.card:nth-child(4) { grid-column: span 4; }
+.card:nth-child(5) { grid-column: span 4; }
+
+.card {
+  background: rgba(10, 25, 15, 0.6);
+  border: 1px solid rgba(34, 197, 94, 0.12);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.card h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.15rem;
+  letter-spacing: .3px;
+}
+
+.desc {
+  color: #dfe7e2;
+  margin-top: 1rem;
+  line-height: 1.6;
+  font-size: .98rem;
+}
+
+/* Bulleted lists */
+.bullets {
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.bullets li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: #e9f5ee;
+  margin: .35rem 0;
+}
+.bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0; top: 0;
+  color: #22c55e;
+}
+
+/* Donut gauge */
+.gauge {
+  position: relative;
+  width: 180px; height: 180px;
+  margin: .25rem auto 0 auto;
+}
+.donut { width: 100%; height: 100%; transform: rotate(-90deg); }
+.donut-ring {
+  fill: none;
+  stroke: rgba(255,255,255,0.08);
+  stroke-width: 12;
+}
+.donut-segment.high {
+  fill: none;
+  stroke: #22c55e;
+  stroke-linecap: round;
+  stroke-width: 12;
+  /* stroke-dasharray set inline for flexibility */
+}
+.gauge-center {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+}
+.gauge-label {
+  font-weight: 800;
+  color: #ffffff;
+  font-size: 1.8rem;
+}
+
+/* Impact bars */
+.bar-wrap { margin-bottom: .9rem; }
+.bar-label { display: flex; align-items: baseline; gap: .5rem; margin-bottom: .35rem; }
+.bar-label span { font-weight: 700; color: #fff; }
+.bar-label small { color: #a8b6ad; }
+
+.bar {
+  height: 12px;
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(34, 197, 94, 0.12);
+}
+.bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  border-radius: 999px;
+  animation: grow 900ms ease forwards;
+}
+
+@keyframes grow {
+  from { width: 0; }
+  to { /* width set inline */ }
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .eval-header { grid-template-columns: 120px 1fr auto; }
+  .eval-logo { height: 40px; }
+}
+@media (max-width: 920px) {
+  .eval-grid { grid-template-columns: repeat(6, 1fr); }
+  .card:nth-child(1) { grid-column: span 6; }
+  .card:nth-child(2) { grid-column: span 6; }
+  .card:nth-child(3) { grid-column: span 6; }
+  .card:nth-child(4) { grid-column: span 3; }
+  .card:nth-child(5) { grid-column: span 3; }
+}
+@media (max-width: 640px) {
+  .eval-header { grid-template-columns: 1fr; text-align: center; }
+  .status-badge { justify-self: center; }
+  .eval-logo { height: 36px; margin: 0 auto; }
+  .eval-title h2 { font-size: 1.6rem; }
+  .eval-grid { grid-template-columns: 1fr; }
+  .card { grid-column: span 1 !important; }
+  .gauge { width: 150px; height: 150px; }
+  .gauge-label { font-size: 1.5rem; }
+}
