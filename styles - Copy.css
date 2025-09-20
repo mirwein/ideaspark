@@ -16,7 +16,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 20px;
 }
 
 /* Header */
@@ -38,13 +38,6 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-.site-logo {
-    height: 57px;              /* default desktop height */
-    width: auto;
-    display: block;
-    object-fit: contain;
-	padding-right:30px;
 }
 
 .logo i {
@@ -80,7 +73,6 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-	padding-left:30px;
 }
 
 .user-avatar {
